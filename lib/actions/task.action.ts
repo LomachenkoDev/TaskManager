@@ -25,7 +25,7 @@ export async function createTask(params: createTaskParams) {
 export async function getTasks() {
   try {
     connectToDatabase();
-    const allTasks = await Task.find({}).sort({ createdAt: -1 });
+    const allTasks = await Task.find({}, { _id: 0 }).sort({ createdAt: -1 });
     return { allTasks };
   } catch (error) {
     console.log(error);
